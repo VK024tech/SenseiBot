@@ -13,10 +13,13 @@ export default function Conversation({
 }) {
   const messageEndRef = useRef(null);
 
+
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+
+  ///show message on screen
   function renderMessage() {
     return messages?.map((message, index) => {
       if (message?.sender === "user") {

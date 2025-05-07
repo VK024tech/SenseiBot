@@ -21,6 +21,7 @@ export default function Body({
   const [startTyping, setStartTyping] = useState(false);
   const [emptyBClicked, setEmptyBClicked] = useState(false);
   const [storageKey, setStorageKey] = useState("");
+
   let key;
   ////session id/////
   useEffect(() => {
@@ -35,6 +36,7 @@ export default function Body({
     setStorageKey(key);
     // console.log(storageKey)
 
+    ///retirve data and save into messages array
     try {
       const storedData = localStorage.getItem(key);
       const data =
@@ -46,6 +48,7 @@ export default function Body({
     }
   }, []);
 
+  ///Saving messages in local storage
   function storageHandling() {
     try {
       localStorage.setItem(storageKey, JSON.stringify(messages));
@@ -80,7 +83,6 @@ export default function Body({
   },[newQuery])
 
   ////clear empty
-
   const clearEmptyArrays = () => {
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -96,6 +98,7 @@ export default function Body({
     }
   };
 
+  ///send user input and recieve response from gemini
   const handleApi = async () => {
     try {
       setLoading(true);
@@ -112,6 +115,7 @@ export default function Body({
     }
   };
 
+  ////saving user mesages into state and clearinh user text
   const handleMessages = async () => {
     if (userText.trim()) {
       const userMesssage = { sender: "user", text: userText };
@@ -119,6 +123,7 @@ export default function Body({
       setUserText("");
     }
   };
+
 
   useEffect(() => {
     if (initialMount.current) {
@@ -149,6 +154,7 @@ export default function Body({
       }
     }
   }, [aiText]);
+
 
   function button() {
     if (userText.length > 0) {

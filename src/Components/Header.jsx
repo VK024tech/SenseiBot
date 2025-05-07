@@ -53,19 +53,19 @@ export default function Header({ setNewQuery, newQuery, setMessages }) {
           <i
             onClick={() => {
               setNewQuery(true);
-              console.log(newQuery);
+              // console.log(newQuery);
             }}
             className="text-xl md:pr-12 fa-regular fa-pen-to-square cursor-pointer"
           ></i>
         </div>
       </header>
-      <div
+      {/* <div
         className={`transition-transform duration-300 ease-in-out ${
           side ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* <History /> */}
-      </div>
+        <History />
+      </div> */}
     </div>
   );
 }
